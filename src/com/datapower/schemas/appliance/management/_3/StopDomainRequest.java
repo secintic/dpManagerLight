@@ -1,18 +1,17 @@
-
 package com.datapower.schemas.appliance.management._3;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.xml.bind.annotation.*;
 
 
 /**
  * <p>Java class for anonymous complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
@@ -24,41 +23,18 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "domain"
+        "domain"
 })
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @XmlRootElement(name = "StopDomainRequest")
 public class StopDomainRequest {
 
     @XmlElement(name = "Domain", required = true)
     protected String domain;
-
-    /**
-     * Gets the value of the domain property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDomain() {
-        return domain;
-    }
-
-    /**
-     * Sets the value of the domain property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDomain(String value) {
-        this.domain = value;
-    }
 
 }

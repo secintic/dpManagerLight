@@ -1,6 +1,5 @@
 package org.ibm.dp;
 
-import lombok.Builder;
 import lombok.Data;
 
 @Data

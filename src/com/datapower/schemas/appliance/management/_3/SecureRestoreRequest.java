@@ -1,18 +1,17 @@
-
 package com.datapower.schemas.appliance.management._3;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.xml.bind.annotation.*;
 
 
 /**
  * <p>Java class for anonymous complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
@@ -30,17 +29,18 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "validate",
-    "cryptoCredentialName",
-    "secureBackupSource",
-    "secureBackup",
-    "backupMachineType"
+        "validate",
+        "cryptoCredentialName",
+        "secureBackupSource",
+        "secureBackup",
+        "backupMachineType"
 })
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @XmlRootElement(name = "SecureRestoreRequest")
 public class SecureRestoreRequest {
 
@@ -54,125 +54,5 @@ public class SecureRestoreRequest {
     protected SecureBackup secureBackup;
     @XmlElement(name = "BackupMachineType")
     protected String backupMachineType;
-
-    /**
-     * Gets the value of the validate property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Object }
-     *     
-     */
-    public Object getValidate() {
-        return validate;
-    }
-
-    /**
-     * Sets the value of the validate property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Object }
-     *     
-     */
-    public void setValidate(Object value) {
-        this.validate = value;
-    }
-
-    /**
-     * Gets the value of the cryptoCredentialName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getCryptoCredentialName() {
-        return cryptoCredentialName;
-    }
-
-    /**
-     * Sets the value of the cryptoCredentialName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setCryptoCredentialName(String value) {
-        this.cryptoCredentialName = value;
-    }
-
-    /**
-     * Gets the value of the secureBackupSource property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getSecureBackupSource() {
-        return secureBackupSource;
-    }
-
-    /**
-     * Sets the value of the secureBackupSource property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setSecureBackupSource(String value) {
-        this.secureBackupSource = value;
-    }
-
-    /**
-     * Gets the value of the secureBackup property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link SecureBackup }
-     *     
-     */
-    public SecureBackup getSecureBackup() {
-        return secureBackup;
-    }
-
-    /**
-     * Sets the value of the secureBackup property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link SecureBackup }
-     *     
-     */
-    public void setSecureBackup(SecureBackup value) {
-        this.secureBackup = value;
-    }
-
-    /**
-     * Gets the value of the backupMachineType property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getBackupMachineType() {
-        return backupMachineType;
-    }
-
-    /**
-     * Sets the value of the backupMachineType property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setBackupMachineType(String value) {
-        this.backupMachineType = value;
-    }
 
 }

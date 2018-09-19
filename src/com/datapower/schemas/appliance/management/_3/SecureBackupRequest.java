@@ -1,18 +1,17 @@
-
 package com.datapower.schemas.appliance.management._3;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.xml.bind.annotation.*;
 
 
 /**
  * <p>Java class for anonymous complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
@@ -30,17 +29,18 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "doNotIncludeiSCSI",
-    "doNotIncludeRAID",
-    "cryptoCertificateName",
-    "cryptoCertificate",
-    "secureBackupDestination"
+        "doNotIncludeiSCSI",
+        "doNotIncludeRAID",
+        "cryptoCertificateName",
+        "cryptoCertificate",
+        "secureBackupDestination"
 })
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @XmlRootElement(name = "SecureBackupRequest")
 public class SecureBackupRequest {
 
@@ -54,123 +54,5 @@ public class SecureBackupRequest {
     protected byte[] cryptoCertificate;
     @XmlElement(name = "SecureBackupDestination")
     protected String secureBackupDestination;
-
-    /**
-     * Gets the value of the doNotIncludeiSCSI property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Object }
-     *     
-     */
-    public Object getDoNotIncludeiSCSI() {
-        return doNotIncludeiSCSI;
-    }
-
-    /**
-     * Sets the value of the doNotIncludeiSCSI property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Object }
-     *     
-     */
-    public void setDoNotIncludeiSCSI(Object value) {
-        this.doNotIncludeiSCSI = value;
-    }
-
-    /**
-     * Gets the value of the doNotIncludeRAID property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Object }
-     *     
-     */
-    public Object getDoNotIncludeRAID() {
-        return doNotIncludeRAID;
-    }
-
-    /**
-     * Sets the value of the doNotIncludeRAID property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Object }
-     *     
-     */
-    public void setDoNotIncludeRAID(Object value) {
-        this.doNotIncludeRAID = value;
-    }
-
-    /**
-     * Gets the value of the cryptoCertificateName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getCryptoCertificateName() {
-        return cryptoCertificateName;
-    }
-
-    /**
-     * Sets the value of the cryptoCertificateName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setCryptoCertificateName(String value) {
-        this.cryptoCertificateName = value;
-    }
-
-    /**
-     * Gets the value of the cryptoCertificate property.
-     * 
-     * @return
-     *     possible object is
-     *     byte[]
-     */
-    public byte[] getCryptoCertificate() {
-        return cryptoCertificate;
-    }
-
-    /**
-     * Sets the value of the cryptoCertificate property.
-     * 
-     * @param value
-     *     allowed object is
-     *     byte[]
-     */
-    public void setCryptoCertificate(byte[] value) {
-        this.cryptoCertificate = value;
-    }
-
-    /**
-     * Gets the value of the secureBackupDestination property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getSecureBackupDestination() {
-        return secureBackupDestination;
-    }
-
-    /**
-     * Sets the value of the secureBackupDestination property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setSecureBackupDestination(String value) {
-        this.secureBackupDestination = value;
-    }
 
 }

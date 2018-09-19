@@ -1,4 +1,3 @@
-
 package com.datapower.schemas.appliance.management._3;
 
 import javax.xml.bind.annotation.XmlEnum;
@@ -8,7 +7,7 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for op-state.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
@@ -19,7 +18,6 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
- * 
  */
 @XmlType(name = "op-state")
 @XmlEnum
@@ -35,17 +33,17 @@ public enum OpState {
         value = v;
     }
 
-    public String value() {
-        return value;
-    }
-
     public static OpState fromValue(String v) {
-        for (OpState c: OpState.values()) {
+        for (OpState c : OpState.values()) {
             if (c.value.equals(v)) {
                 return c;
             }
         }
         throw new IllegalArgumentException(v);
+    }
+
+    public String value() {
+        return value;
     }
 
 }

@@ -1,18 +1,20 @@
 package org.ibm.dp;
 
 
-import com.datapower.schemas.appliance.management._3.GetDeviceInfoRequest;
-import com.datapower.schemas.appliance.management._3.GetDeviceInfoResponse;
+import com.datapower.schemas.appliance.management._3.*;
 import com.datapower.schemas.appliance.management._3_0.wsdl.AppMgmtProtocol;
 import com.datapower.schemas.appliance.management._3_0.wsdl.AppMgmtProtocol_Service;
 import com.datapower.schemas.appliance.management._3_0.wsdl.Fault;
 
 import javax.net.ssl.*;
 import javax.xml.ws.BindingProvider;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.X509Certificate;
-import java.util.Scanner;
 
 public class Main {
 
@@ -21,24 +23,32 @@ public class Main {
         configureSSL();
         AppMgmtProtocol appMgmtProtocol = configureBindingProvider(datapowerCredentials);
         try {
-            GetDeviceInfoResponse getDeviceInfoResponse = appMgmtProtocol.getDeviceInfo(new GetDeviceInfoRequest());
-            System.out.println(getDeviceInfoResponse.toString());
+            GetDomainExportResponse getDomainExportResponse = appMgmtProtocol.getDomainExport(new GetDomainExportRequest("default"));
+            SecureBackupResponse secureBackupResponse = appMgmtProtocol.secureBackup(new SecureBackupRequest());
+            SecureRestoreResponse secureRestoreResponse = appMgmtProtocol.secureRestore(new SecureRestoreRequest());
+            SetDomainExportResponse setDomainExportResponse = appMgmtProtocol.setDomainExport(new SetDomainExportRequest());
+            writeResponseToFile(getDomainExportResponse, "export.zip");
         } catch (Fault fault) {
             fault.printStackTrace();
         }
     }
 
+    private static void writeResponseToFile(GetDomainExportResponse getDomainExportResponse, String fileName) throws IOException {
+        byte bytes[] = getDomainExportResponse.getConfig().getValue();
+        File file = new File(fileName);
+        BufferedOutputStream writer = new BufferedOutputStream(new FileOutputStream(file));
+        writer.write(bytes);
+        writer.flush();
+        writer.close();
+    }
+
     private static DatapowerCredentials getServerInformationFromUser() {
-        Scanner scanner = new Scanner(System.in);
         DatapowerCredentials datapowerCredentials = new DatapowerCredentials();
-        System.out.print("Please Enter Datapower IP or Hostname: ");
-        datapowerCredentials.setHost(scanner.next());
-        System.out.print("Please Enter Datapower Port Number: ");
-        datapowerCredentials.setPort(scanner.nextInt());
-        System.out.print("Please Enter Datapower Username: ");
-        datapowerCredentials.setUsername(scanner.next());
-        System.out.print("Please Enter Datapower Password: ");
-        datapowerCredentials.setPassword(scanner.next());
+        datapowerCredentials.setHost("192.168.68.2");
+        datapowerCredentials.setPort(5550);
+        datapowerCredentials.setUsername("admin");
+        datapowerCredentials.setPassword("passw0rd");
+
         return datapowerCredentials;
     }
 

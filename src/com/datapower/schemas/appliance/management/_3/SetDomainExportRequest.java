@@ -1,18 +1,17 @@
-
 package com.datapower.schemas.appliance.management._3;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.xml.bind.annotation.*;
 
 
 /**
  * <p>Java class for anonymous complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
@@ -35,20 +34,21 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "resetDomain",
-    "config",
-    "configFile",
-    "policy",
-    "policyObjectName",
-    "policyConfiguration",
-    "services",
-    "importAllFiles"
+        "resetDomain",
+        "config",
+        "configFile",
+        "policy",
+        "policyObjectName",
+        "policyConfiguration",
+        "services",
+        "importAllFiles"
 })
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @XmlRootElement(name = "SetDomainExportRequest")
 public class SetDomainExportRequest {
 
@@ -68,197 +68,5 @@ public class SetDomainExportRequest {
     protected ConfigObjects services;
     @XmlElement(name = "ImportAllFiles", defaultValue = "false")
     protected Boolean importAllFiles;
-
-    /**
-     * Gets the value of the resetDomain property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *     
-     */
-    public Boolean isResetDomain() {
-        return resetDomain;
-    }
-
-    /**
-     * Sets the value of the resetDomain property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *     
-     */
-    public void setResetDomain(Boolean value) {
-        this.resetDomain = value;
-    }
-
-    /**
-     * Gets the value of the config property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Backup }
-     *     
-     */
-    public Backup getConfig() {
-        return config;
-    }
-
-    /**
-     * Sets the value of the config property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Backup }
-     *     
-     */
-    public void setConfig(Backup value) {
-        this.config = value;
-    }
-
-    /**
-     * Gets the value of the configFile property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BackupFile }
-     *     
-     */
-    public BackupFile getConfigFile() {
-        return configFile;
-    }
-
-    /**
-     * Sets the value of the configFile property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BackupFile }
-     *     
-     */
-    public void setConfigFile(BackupFile value) {
-        this.configFile = value;
-    }
-
-    /**
-     * Gets the value of the policy property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link DeploymentPolicy }
-     *     
-     */
-    public DeploymentPolicy getPolicy() {
-        return policy;
-    }
-
-    /**
-     * Sets the value of the policy property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link DeploymentPolicy }
-     *     
-     */
-    public void setPolicy(DeploymentPolicy value) {
-        this.policy = value;
-    }
-
-    /**
-     * Gets the value of the policyObjectName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getPolicyObjectName() {
-        return policyObjectName;
-    }
-
-    /**
-     * Sets the value of the policyObjectName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setPolicyObjectName(String value) {
-        this.policyObjectName = value;
-    }
-
-    /**
-     * Gets the value of the policyConfiguration property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link DeploymentPolicyConfiguration }
-     *     
-     */
-    public DeploymentPolicyConfiguration getPolicyConfiguration() {
-        return policyConfiguration;
-    }
-
-    /**
-     * Sets the value of the policyConfiguration property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link DeploymentPolicyConfiguration }
-     *     
-     */
-    public void setPolicyConfiguration(DeploymentPolicyConfiguration value) {
-        this.policyConfiguration = value;
-    }
-
-    /**
-     * Gets the value of the services property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ConfigObjects }
-     *     
-     */
-    public ConfigObjects getServices() {
-        return services;
-    }
-
-    /**
-     * Sets the value of the services property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ConfigObjects }
-     *     
-     */
-    public void setServices(ConfigObjects value) {
-        this.services = value;
-    }
-
-    /**
-     * Gets the value of the importAllFiles property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *     
-     */
-    public Boolean isImportAllFiles() {
-        return importAllFiles;
-    }
-
-    /**
-     * Sets the value of the importAllFiles property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *     
-     */
-    public void setImportAllFiles(Boolean value) {
-        this.importAllFiles = value;
-    }
 
 }

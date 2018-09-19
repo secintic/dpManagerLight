@@ -1,4 +1,3 @@
-
 package com.datapower.schemas.appliance.management._3;
 
 import javax.xml.bind.annotation.XmlEnum;
@@ -8,7 +7,7 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for secure-backup-state.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
@@ -19,7 +18,6 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
- * 
  */
 @XmlType(name = "secure-backup-state")
 @XmlEnum
@@ -35,17 +33,17 @@ public enum SecureBackupState {
         value = v;
     }
 
-    public String value() {
-        return value;
-    }
-
     public static SecureBackupState fromValue(String v) {
-        for (SecureBackupState c: SecureBackupState.values()) {
+        for (SecureBackupState c : SecureBackupState.values()) {
             if (c.value.equals(v)) {
                 return c;
             }
         }
         throw new IllegalArgumentException(v);
+    }
+
+    public String value() {
+        return value;
     }
 
 }

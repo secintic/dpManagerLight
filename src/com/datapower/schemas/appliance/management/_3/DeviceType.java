@@ -1,4 +1,3 @@
-
 package com.datapower.schemas.appliance.management._3;
 
 import javax.xml.bind.annotation.XmlEnum;
@@ -8,7 +7,7 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for device-type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
@@ -22,7 +21,6 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
- * 
  */
 @XmlType(name = "device-type")
 @XmlEnum
@@ -44,17 +42,17 @@ public enum DeviceType {
         value = v;
     }
 
-    public String value() {
-        return value;
-    }
-
     public static DeviceType fromValue(String v) {
-        for (DeviceType c: DeviceType.values()) {
+        for (DeviceType c : DeviceType.values()) {
             if (c.value.equals(v)) {
                 return c;
             }
         }
         throw new IllegalArgumentException(v);
+    }
+
+    public String value() {
+        return value;
     }
 
 }

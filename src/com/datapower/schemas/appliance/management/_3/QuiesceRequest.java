@@ -1,19 +1,17 @@
-
 package com.datapower.schemas.appliance.management._3;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.xml.bind.annotation.*;
 
 
 /**
  * <p>Java class for anonymous complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
@@ -48,14 +46,15 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "device",
-    "domain"
+        "device",
+        "domain"
 })
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @XmlRootElement(name = "QuiesceRequest")
 public class QuiesceRequest {
 
@@ -65,59 +64,10 @@ public class QuiesceRequest {
     protected QuiesceRequest.Domain domain;
 
     /**
-     * Gets the value of the device property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link QuiesceRequest.Device }
-     *     
-     */
-    public QuiesceRequest.Device getDevice() {
-        return device;
-    }
-
-    /**
-     * Sets the value of the device property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link QuiesceRequest.Device }
-     *     
-     */
-    public void setDevice(QuiesceRequest.Device value) {
-        this.device = value;
-    }
-
-    /**
-     * Gets the value of the domain property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link QuiesceRequest.Domain }
-     *     
-     */
-    public QuiesceRequest.Domain getDomain() {
-        return domain;
-    }
-
-    /**
-     * Sets the value of the domain property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link QuiesceRequest.Domain }
-     *     
-     */
-    public void setDomain(QuiesceRequest.Domain value) {
-        this.domain = value;
-    }
-
-
-    /**
      * <p>Java class for anonymous complex type.
-     * 
+     *
      * <p>The following schema fragment specifies the expected content contained within this class.
-     * 
+     *
      * <pre>
      * &lt;complexType>
      *   &lt;complexContent>
@@ -129,43 +79,28 @@ public class QuiesceRequest {
      *   &lt;/complexContent>
      * &lt;/complexType>
      * </pre>
-     * 
-     * 
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-        "timeout"
+            "timeout"
     })
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
     public static class Device {
 
         @XmlElement(name = "Timeout")
         @XmlSchemaType(name = "unsignedShort")
         protected int timeout;
 
-        /**
-         * Gets the value of the timeout property.
-         * 
-         */
-        public int getTimeout() {
-            return timeout;
-        }
-
-        /**
-         * Sets the value of the timeout property.
-         * 
-         */
-        public void setTimeout(int value) {
-            this.timeout = value;
-        }
-
     }
 
 
     /**
      * <p>Java class for anonymous complex type.
-     * 
+     *
      * <p>The following schema fragment specifies the expected content contained within this class.
-     * 
+     *
      * <pre>
      * &lt;complexType>
      *   &lt;complexContent>
@@ -179,15 +114,16 @@ public class QuiesceRequest {
      *   &lt;/complexContent>
      * &lt;/complexType>
      * </pre>
-     * 
-     * 
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-        "name",
-        "timeout",
-        "services"
+            "name",
+            "timeout",
+            "services"
     })
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
     public static class Domain {
 
         @XmlElement(name = "Name", required = true)
@@ -197,70 +133,6 @@ public class QuiesceRequest {
         protected int timeout;
         @XmlElement(name = "Services")
         protected ConfigObjects services;
-
-        /**
-         * Gets the value of the name property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
-         */
-        public String getName() {
-            return name;
-        }
-
-        /**
-         * Sets the value of the name property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
-         */
-        public void setName(String value) {
-            this.name = value;
-        }
-
-        /**
-         * Gets the value of the timeout property.
-         * 
-         */
-        public int getTimeout() {
-            return timeout;
-        }
-
-        /**
-         * Sets the value of the timeout property.
-         * 
-         */
-        public void setTimeout(int value) {
-            this.timeout = value;
-        }
-
-        /**
-         * Gets the value of the services property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link ConfigObjects }
-         *     
-         */
-        public ConfigObjects getServices() {
-            return services;
-        }
-
-        /**
-         * Sets the value of the services property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link ConfigObjects }
-         *     
-         */
-        public void setServices(ConfigObjects value) {
-            this.services = value;
-        }
 
     }
 

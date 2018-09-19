@@ -1,19 +1,17 @@
-
 package com.datapower.schemas.appliance.management._3;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.xml.bind.annotation.*;
 
 
 /**
  * <p>Java class for anonymous complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
@@ -26,14 +24,15 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "status",
-    "secureBackup"
+        "status",
+        "secureBackup"
 })
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @XmlRootElement(name = "SecureBackupResponse")
 public class SecureBackupResponse {
 
@@ -42,53 +41,5 @@ public class SecureBackupResponse {
     protected Status status;
     @XmlElement(name = "SecureBackup")
     protected SecureBackup secureBackup;
-
-    /**
-     * Gets the value of the status property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Status }
-     *     
-     */
-    public Status getStatus() {
-        return status;
-    }
-
-    /**
-     * Sets the value of the status property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Status }
-     *     
-     */
-    public void setStatus(Status value) {
-        this.status = value;
-    }
-
-    /**
-     * Gets the value of the secureBackup property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link SecureBackup }
-     *     
-     */
-    public SecureBackup getSecureBackup() {
-        return secureBackup;
-    }
-
-    /**
-     * Sets the value of the secureBackup property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link SecureBackup }
-     *     
-     */
-    public void setSecureBackup(SecureBackup value) {
-        this.secureBackup = value;
-    }
 
 }

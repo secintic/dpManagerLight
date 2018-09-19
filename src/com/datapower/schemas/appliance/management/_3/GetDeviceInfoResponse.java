@@ -1,4 +1,3 @@
-
 package com.datapower.schemas.appliance.management._3;
 
 import lombok.Data;
