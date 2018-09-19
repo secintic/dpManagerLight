@@ -22,14 +22,32 @@ public class Main {
         DatapowerCredentials datapowerCredentials = getServerInformationFromUser();
         configureSSL();
         AppMgmtProtocol appMgmtProtocol = configureBindingProvider(datapowerCredentials);
+        String operation = "domainBackup";
         try {
-            GetDomainExportResponse getDomainExportResponse = appMgmtProtocol.getDomainExport(new GetDomainExportRequest("default"));
-            SecureBackupResponse secureBackupResponse = appMgmtProtocol.secureBackup(new SecureBackupRequest());
-            SecureRestoreResponse secureRestoreResponse = appMgmtProtocol.secureRestore(new SecureRestoreRequest());
-            SetDomainExportResponse setDomainExportResponse = appMgmtProtocol.setDomainExport(new SetDomainExportRequest());
-            writeResponseToFile(getDomainExportResponse, "export.zip");
+            switch (operation) {
+                case "secureBackup":
+                    SecureBackupResponse secureBackupResponse = appMgmtProtocol.secureBackup(new SecureBackupRequest());
+                    break;
+                case "secureRestore":
+                    SecureRestoreResponse secureRestoreResponse = appMgmtProtocol.secureRestore(new SecureRestoreRequest());
+                case "domainBackup":
+                    getDomainBackup(appMgmtProtocol);
+                    break;
+                case "domainRestore":
+                    SetDomainExportResponse setDomainExportResponse = appMgmtProtocol.setDomainExport(new SetDomainExportRequest());
+                    break;
+
+            }
         } catch (Fault fault) {
             fault.printStackTrace();
+        }
+    }
+
+    private static void getDomainBackup(AppMgmtProtocol appMgmtProtocol) throws Fault, IOException {
+        GetDomainListResponse getDomainListResponse = appMgmtProtocol.getDomainList(new GetDomainListRequest());
+        for (String domainName : getDomainListResponse.getDomain()) {
+            GetDomainExportResponse getDomainExportResponse = appMgmtProtocol.getDomainExport(new GetDomainExportRequest(domainName));
+            writeResponseToFile(getDomainExportResponse, "export" + domainName + ".zip");
         }
     }
 
