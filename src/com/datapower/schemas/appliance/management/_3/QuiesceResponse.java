@@ -35,6 +35,19 @@ import javax.xml.bind.annotation.*;
 public class QuiesceResponse {
 
     @XmlElement(name = "Status")
-    @XmlSchemaType(name = "string")
-    protected Status status;
+    protected QuiesceResponse.Status status;
+
+
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "", propOrder = {
+            "result"
+    })
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class Status {
+
+        @XmlElement(name = "result", required = true)
+        protected String result;
+    }
 }

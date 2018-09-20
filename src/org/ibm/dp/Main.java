@@ -17,47 +17,70 @@ import java.security.NoSuchAlgorithmException;
 import java.security.cert.X509Certificate;
 
 public class Main {
+    public static int TIMEOUT = 120;
 
     public static void main(String[] args) throws Exception {
+        AppMgmtProtocol appMgmtProtocol = configureConnection();
+        String operation = "secureBackup";
+        switch (operation) {
+            case "secureBackup":
+                getSecureBackup(appMgmtProtocol);
+                break;
+            case "secureRestore":
+                SecureRestoreResponse secureRestoreResponse = appMgmtProtocol.secureRestore(new SecureRestoreRequest());
+            case "domainBackup":
+                getDomainBackup(appMgmtProtocol);
+                break;
+            case "domainRestore":
+                SetDomainExportResponse setDomainExportResponse = appMgmtProtocol.setDomainExport(new SetDomainExportRequest());
+                break;
+
+        }
+    }
+
+    private static void getSecureBackup(AppMgmtProtocol appMgmtProtocol) {
+        try {
+            Object quiesceResponse = appMgmtProtocol.quiesce(new QuiesceRequest(TIMEOUT, "tes3223t"));
+           // if ("ok".equals(quiesceResponse.getStatus().value()))
+                System.out.println("Quiesce Completed: "+ quiesceResponse.toString());
+            UnquiesceResponse unquiesceResponse = appMgmtProtocol.unquiesce(new UnquiesceRequest(new UnquiesceRequest.Domain("test")));
+          //  if ("ok".equals(unquiesceResponse.getStatus().value()))
+                System.out.println("Unquiesce Completed");
+            //SecureBackupResponse secureBackupResponse = appMgmtProtocol.secureBackup(new SecureBackupRequest());
+        } catch (Fault fault) {
+            fault.printStackTrace();
+        }
+    }
+
+    private static AppMgmtProtocol configureConnection() throws NoSuchAlgorithmException, KeyManagementException {
         DatapowerCredentials datapowerCredentials = getServerInformationFromUser();
         configureSSL();
-        AppMgmtProtocol appMgmtProtocol = configureBindingProvider(datapowerCredentials);
-        String operation = "domainBackup";
-        try {
-            switch (operation) {
-                case "secureBackup":
-                    SecureBackupResponse secureBackupResponse = appMgmtProtocol.secureBackup(new SecureBackupRequest());
-                    break;
-                case "secureRestore":
-                    SecureRestoreResponse secureRestoreResponse = appMgmtProtocol.secureRestore(new SecureRestoreRequest());
-                case "domainBackup":
-                    getDomainBackup(appMgmtProtocol);
-                    break;
-                case "domainRestore":
-                    SetDomainExportResponse setDomainExportResponse = appMgmtProtocol.setDomainExport(new SetDomainExportRequest());
-                    break;
+        return configureBindingProvider(datapowerCredentials);
+    }
 
+    private static void getDomainBackup(AppMgmtProtocol appMgmtProtocol) {
+        try {
+            GetDomainListResponse getDomainListResponse = appMgmtProtocol.getDomainList(new GetDomainListRequest());
+            for (String domainName : getDomainListResponse.getDomain()) {
+                GetDomainExportResponse getDomainExportResponse = appMgmtProtocol.getDomainExport(new GetDomainExportRequest(domainName));
+                writeResponseToFile(getDomainExportResponse, "export" + domainName + ".zip");
             }
         } catch (Fault fault) {
             fault.printStackTrace();
         }
     }
 
-    private static void getDomainBackup(AppMgmtProtocol appMgmtProtocol) throws Fault, IOException {
-        GetDomainListResponse getDomainListResponse = appMgmtProtocol.getDomainList(new GetDomainListRequest());
-        for (String domainName : getDomainListResponse.getDomain()) {
-            GetDomainExportResponse getDomainExportResponse = appMgmtProtocol.getDomainExport(new GetDomainExportRequest(domainName));
-            writeResponseToFile(getDomainExportResponse, "export" + domainName + ".zip");
+    private static void writeResponseToFile(GetDomainExportResponse getDomainExportResponse, String fileName) {
+        try {
+            byte bytes[] = getDomainExportResponse.getConfig().getValue();
+            File file = new File(fileName);
+            BufferedOutputStream writer = new BufferedOutputStream(new FileOutputStream(file));
+            writer.write(bytes);
+            writer.flush();
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-    }
-
-    private static void writeResponseToFile(GetDomainExportResponse getDomainExportResponse, String fileName) throws IOException {
-        byte bytes[] = getDomainExportResponse.getConfig().getValue();
-        File file = new File(fileName);
-        BufferedOutputStream writer = new BufferedOutputStream(new FileOutputStream(file));
-        writer.write(bytes);
-        writer.flush();
-        writer.close();
     }
 
     private static DatapowerCredentials getServerInformationFromUser() {

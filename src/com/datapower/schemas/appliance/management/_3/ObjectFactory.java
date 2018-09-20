@@ -229,12 +229,6 @@ public class ObjectFactory {
         return new QuiesceResponse();
     }
 
-    /**
-     * Create an instance of {@link QuiesceRequest.Device }
-     */
-    public QuiesceRequest.Device createQuiesceRequestDevice() {
-        return new QuiesceRequest.Device();
-    }
 
     /**
      * Create an instance of {@link QuiesceRequest.Domain }
